@@ -345,9 +345,9 @@
 					\\
 					\frac{dI}{dmt} &=
 					\begin{cases}
-						0.64t           & 0 \leq t \leq 20\\
-						0               & 20 < t \leq 30\\
-						- \frac{32t}{5} & 30 < t \leq 50
+						0.64t          & 0 \leq t \leq 20\\
+						0              & 20 < t \leq 30\\
+						- \frac{32}{5} & 30 < t \leq 50
 					\end{cases}\\
 					\\
 						\mathcal{E} &= -\pi*10^{-11} * \frac{dI}{dt}\\
@@ -376,6 +376,53 @@
 					\end{cases}
 				\end{align*}
 			\item La gráfica de fem inducida vs. tiempo.
+
+			\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}[scale=1, transform shape]
+				\begin{axis}
+					[
+						width=0.7\linewidth,
+						height=7cm,
+						%
+						ymin=-0.000001,
+						ymax=0.000001,
+						%
+						xmin=0,
+						xmax=55,
+						%
+						axis y line=left,
+						axis x line=bottom,
+						axis line style = ultra thick,
+						%
+						xlabel={$t(ms)$},
+						ylabel={$\phi(Wb)$}
+					]
+					\addplot
+						[
+							domain={0:20},
+							blue,
+							ultra thick
+						]
+						{-pi*10^(-11)*1000*(0.64*x)};
+					\addplot
+						[
+							domain={20:30},
+							blue,
+							ultra thick
+						]
+						{0};
+					\addplot
+						[
+							domain={30:50},
+							blue,
+							ultra thick
+						]
+						{-pi*10^(-11)*1000*(-32/5)};
+
+				\end{axis}
+			\end{tikzpicture}
+		\end{figure}
 		\end{enumerate}
 \end{enumerate}
 
