@@ -20,17 +20,23 @@
 		se requiere una fuerza considerable,
 		la cual aumenta con la rapidez.
 		Explica este fenómeno.
+		\subitem La fuerza es proporcional a la rapidez a la que la lámina
+			se aleja del electronimán.
 	\setcounter{enumi}{3}
 	\item Cuando un imán se suelta dentro de un tubo cobre,
 		este caerá más lentamente que si fuerza soltado fuera del tubo.
 		Si el cobre no es un material ferromagnético,
 		¿Por qué ocurre esto?
+		\subitem Porque la $fem$ de las cargas del tubo crea un
+			campo magnético en sentido contrario a el del imán.
 	\item Un avión vuela horizontalmente sobre la Antártida,
 		donde el campo magnético terrestre está dirigido sobre todo hacia el
 		frente del avión,
 		¿el extremo del ala izquierda está a un potencial mayor que el del ala
 		derecha?
 		¿La respuesta depende de la dirección en que vuela el avión?
+		\subitem No.
+		\subitem Sí, si es que gira $90°$ a la derecha.
 \end{enumerate}
 
 \section{Problemas}%
@@ -45,19 +51,140 @@
 			\item Una pirámide cuyas caras son triángulos equiláteros de
 				$0.5m$ de lado.
 		\end{enumerate}
+		\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}[scale=1, transform shape]
+				\begin{scope}[canvas is xz plane at y=0]
+					% La base
+					\node (algo) at (0,0) [shape=rectangle, draw, minimum size=3cm] {};
+				\end{scope}
+
+				% Las aristas de los lados de la pirámide
+				\draw(0,3,0) -- (algo.north west);
+				\draw(0,3,0) -- (algo.north east);
+				\draw(0,3,0) -- (algo.south east);
+				\draw(0,3,0) -- (algo.south west);
+
+				% Las esquinas
+				\draw (algo.north west) node[below] {$P$};
+				\draw (algo.north east) node[below] {$S$};
+				\draw (algo.south east) node[right] {$R$};
+				\draw (algo.south west) node[below] {$Q$};
+
+				% La longitud de los lados de la base
+				\draw (algo.north) node[above] {$0.5m$};
+				\draw (algo.east)++(0.25,0) node[right] {$0.5m$};
+
+				% El campo magnético
+				\draw[-{Latex[length=5]}] (-3,2) -- ++(0,-2)
+					node [midway, right] {$\vec{B}$};
+			\end{tikzpicture}
+		\end{figure}
+		\[
+			\phi = 4AB\cos{\alpha}
+		\]
+		\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}[scale=1, transform shape]
+				\node (tri) at (0,0)
+					[
+						regular polygon,
+						regular polygon sides=3,
+						%
+						draw,
+						minimum size=3cm
+					]
+					{};
+				\draw (tri.south) -- (tri.north)
+					node [midway, right] {$L$};
+
+				\draw (tri.side 1) node [left] {$0.5m$};
+				\draw (tri.side 2) node [below] {$0.5m$};
+				\draw (tri.side 3) node [right] {$0.5m$};
+
+			\end{tikzpicture}
+		\end{figure}
+		\begin{align*}
+			A &= 0.25m*L\\
+			\\
+			L &= (0.5) \frac{\sqrt{3}}{2}m\\
+			\\
+			A &= \frac{\sqrt{3}}{16}m\\
+		\end{align*}
+		\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}[scale=1, transform shape]
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (2,0);
+				\coordinate (C) at (0,2);
+				\draw (A) -- (B)
+					node [midway, below] {$0.25\sqrt{2}m$}
+					-- (C)
+					node [midway, right=0.1cm] {$0.5m$}
+					-- cycle
+					node [midway, left] {$H$}
+					;
+			\end{tikzpicture}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}[scale=1, transform shape]
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (3,0);
+				\coordinate (C) at (0,3);
+				\draw (A) -- (B)
+					node [midway, below] {$0.25\sqrt{2}m$}
+					-- (C)
+					node [midway, right=0.1cm] {$0.5m$}
+					-- cycle
+					node [midway, left] {$0.25\sqrt{2}m$}
+					pic [pic text=$\beta$, draw, angle radius=1cm] {angle=C--B--A}
+					pic [pic text=$\alpha$, draw, angle radius=1cm] {angle=A--C--B}
+					;
+			\end{tikzpicture}
+		\end{figure}
+		\[
+			\alpha = 45°
+		\]
+		\begin{align*}
+			\phi &= 4* \frac{\sqrt{3}}{16}m *1mT* \cos{45°}\\
+			\phi &= 4* \frac{\sqrt{3}}{16}m *1mT* \frac{\sqrt{2}}{2} \\
+			\phi &= \frac{\sqrt{6}}{8}mWb
+		\end{align*}
+	\setcounter{enumi}{3}
 	\item Dos espiras circulares se sitúan de la manera mostrada en la figura.
 		La espira superior posee una intensidad de corriente de valor $I$,
 		mientras que la espira inferior se encuentra desconectada.
 		Si la espira superior se mueve hacia arriba, determina:
+		\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}[scale=1, transform shape]
+				\begin{scope}[canvas is xz plane at y=0]
+					\draw (0,0) circle (2);
+				\end{scope}
+				\begin{scope}[canvas is zx plane at y=0.5]
+					%\draw (0,0) circle (2);
+					%\draw (0:2) arc ()
+					\draw[-{Latex[length=5]}] (0:2) arc (0:360:2);
+				\end{scope}
+					\node at (180:1) {$I$};
+			\end{tikzpicture}
+		\end{figure}
+
 		\begin{enumerate}
 			\item La dirección de la corriente inducida en la espira inferior.
+				\subitem Antihorario.
 			\item La dirección de la fuerza magnética inducida en la espira inferior.
+				\subitem Hacia arriba.
 		\end{enumerate}
 		Si se incrementa la corriente que pasa por la espira superior, determina:
 		\begin{enumerate}
 			\item La dirección de la corriente inducida en la espira inferior.
+				\subitem Horario.
 			\item La dirección de la fuerza magnética inducida en la espira inferior.
+				\subitem Hacia abajo.
 		\end{enumerate}
+	\setcounter{enumi}{6}
 	\item Dado el circuito mostrado en la figura, que consta de un circuito
 		circula conectado a una fuente de voltaje $V$ y resistencia $R$,
 		una espira circular en el interior de circuito y otra espira
@@ -91,6 +218,7 @@
 				anillos circulares cuando el interruptor ``$S$'' es
 				cerrado súbitamente.
 		\end{enumerate}
+	\setcounter{enumi}{10}
 	\item En la figura se observa una espira circular de radio $R(5mm)$ ubicada
 		a una distancia $r(50cm)$ de un alambre recto muy largo por el cual
 		circula una corriente $I$ que varía con el tiempo $t$ de acuerdo con
