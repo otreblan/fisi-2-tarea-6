@@ -193,10 +193,10 @@
 			\centering
 			\begin{tikzpicture}
 				[
-				scale=1,
-				transform shape,
-				circuit ee IEC,
-				set resistor graphic=var resistor IEC graphic
+					scale=1,
+					transform shape,
+					circuit ee IEC,
+					set resistor graphic=var resistor IEC graphic
 				]
 				\draw (0,2) to [make contact={info={S}}](1,2);
 
@@ -218,6 +218,28 @@
 				anillos circulares cuando el interruptor ``$S$'' es
 				cerrado súbitamente.
 		\end{enumerate}
+		\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}
+				%\draw (0,2) to [make contact={info={S}}](1,2);
+
+				%\draw (0,0) to [resistor] (0,1.5)
+				%	to [battery={xscale=-1}] (0,2);
+
+				%\draw (0,0) -- (1,0);
+
+				%\draw (1,2) arc (135:-135:{sqrt(2)});
+
+				\draw (2,1) circle (0.5);
+				\draw [->] (2,1)
+					+(90:1) arc (90:180:1);
+
+				\draw (5,1) circle (0.5);
+				\draw [->] (5,1)
+					+(90:1) arc (90:0:1);
+
+			\end{tikzpicture}
+		\end{figure}
 	\setcounter{enumi}{10}
 	\item En la figura se observa una espira circular de radio $R(5mm)$ ubicada
 		a una distancia $r(50cm)$ de un alambre recto muy largo por el cual
@@ -309,10 +331,50 @@
 		\end{figure}
 
 		\begin{enumerate}
-			\item La corriente inducida en el instante $t=14ms$.
+			\item La corriente inducida en el instante $t=15ms$.
+				\begin{align*}
+					\mathcal{E} &= - \frac{d\phi}{dt} \\
+					\\
+					\phi &= AB\cancel{\cos{\theta}}\\
+					\\
+					A &= 25\pi*10^{-6}m \\
+					B &= 4I*10^{-7}\\
+					\\
+					\phi  & = I\pi*10^{-11}\\
+					d\phi & = \pi*10^{-11}dI\\
+					\\
+					\frac{dI}{dmt} &=
+					\begin{cases}
+						0.64t           & 0 \leq t \leq 20\\
+						0               & 20 < t \leq 30\\
+						- \frac{32t}{5} & 30 < t \leq 50
+					\end{cases}\\
+					\\
+						\mathcal{E} &= -\pi*10^{-11} * \frac{dI}{dt}\\
+						\mathcal{E} &= -\pi*10^{-11} * 1000\frac{dI}{dmt}\\
+						\mathcal{E} &= -\pi*10^{-11} * 1000*(0.64*15)A\\
+						\mathcal{E} &= - 9.6\pi*10^{-8}A
+				\end{align*}
 			\item El flujo magnético en el instante $t=40ms$.
+				\begin{align*}
+					\phi &= I\pi*10^{-11}\\
+					\phi &= ( -\frac{32*40}{5}+320 )\pi*10^{-11}\\
+					\phi &= 64\pi*10^{-11} Wb
+				\end{align*}
 			\item La fem inducida en el instante $t=10ms$.
+				\begin{align*}
+					\mathcal{E} &= -\pi*10^{-11} * 1000\frac{dI}{dmt}\\
+					\mathcal{E} &= -\pi*10^{-11} * 1000*(0.64*10)A\\
+					\mathcal{E} &= - 6.4\pi*10^{-8}A
+				\end{align*}
 			\item La dirección de la corriente inducida para todo instante.
+				\begin{align*}
+					\begin{cases}
+						\text{Horario}     & 0 \leq t \leq 20\\
+						\cancel{O}         & 20 < t \leq 30\\
+						\text{Antihorario} & 30 < t \leq 50
+					\end{cases}
+				\end{align*}
 			\item La gráfica de fem inducida vs. tiempo.
 		\end{enumerate}
 \end{enumerate}
